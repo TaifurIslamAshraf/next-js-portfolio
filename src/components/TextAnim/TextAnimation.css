@@ -1,0 +1,29 @@
+.animate-text {
+  color: transparent;
+  background-image: linear-gradient(to left, #ebef95, #7bdba3, #9b59bc);
+  background-clip: text;
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  animation: animateText 6s linear infinite; /* 16s total animation duration (4 colors * 4s each) */
+}
+
+@keyframes animateText {
+  0%,
+  100% {
+    background-position: 0% 50%;
+    color: transparent;
+  }
+  25% {
+    background-position: 100% 50%;
+    color: transparent;
+  }
+  50% {
+    background-position: 0% 50%;
+    color: transparent;
+  }
+  75% {
+    background-position: 100% 50%;
+    color: transparent;
+  }
+}
