@@ -48,14 +48,14 @@ const Projects = async () => {
             return (
               <div
                 key={item._id}
-                className="bg-tertiary rounded-md shadow-lg hover:translate-y-[-5px] transition-all duration-500  xs:max-w-[350px] max-w-[300px] p-3"
+                className="bg-tertiary rounded-md shadow-lg hover:translate-y-[-5px] transition-all duration-500  xs:max-w-[350px] max-w-[300px] p-3 h-[300px]"
               >
                 <Image
                   src={item.image}
                   alt="project images"
                   width={330}
                   height={200}
-                  className="h-[200px] object-cover"
+                  className="object-contain"
                   loading="lazy"
                 />
                 <div className="py-5">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import SectionWrapper from "@/components/Container";
 import ProjectCard from "@/components/ProjectCard";
+import TextAnimation from "@/components/TextAnim/TextAnimation";
 import { styles } from "../styles";
 
 export const metadata: Metadata = {
@@ -43,7 +44,10 @@ const ProjectsPage = async () => {
           <p className={`${styles.sectionSubText}`}>
             PROJECTS WITH THE LATEST FRAMEWORKS
           </p>
-          <h1 className={`${styles.sectionHeadText}`}>Projects.</h1>
+          <TextAnimation
+            text="Projects."
+            classes={`${styles.sectionHeadText} text-center`}
+          />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-y-7 md:space-y-0 place-items-center mt-10 sm:mb-0 mb-14">
           {portfolio.allPortfolio?.map((item: Project) => {

@@ -14,7 +14,9 @@ import { GrMail } from "react-icons/gr";
 const Hero = () => {
   return (
     <div className={`sm:pt-28 text-white-100 z-1 relative ${styles.paddingY}`}>
-      <StarsCanvas />
+      <div className="lg:block xs:hidden">
+        <StarsCanvas />
+      </div>
       <SectionWrapper>
         <div className="grid grid-cols-1 md:grid-cols-2 place-items-center">
           <div className="animate__animated animate__fadeInDown flex items-center md:order-1 order-2 xs:space-y-0 space-y-10">
