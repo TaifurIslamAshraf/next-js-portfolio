@@ -14,7 +14,7 @@ import { GrMail } from "react-icons/gr";
 const Hero = () => {
   return (
     <div className={`sm:pt-28 text-white-100 z-1 relative ${styles.paddingY}`}>
-      <div className="lg:block xs:hidden">
+      <div className="lg:block hidden">
         <StarsCanvas />
       </div>
       <SectionWrapper>
