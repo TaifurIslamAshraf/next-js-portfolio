@@ -21,7 +21,7 @@ interface Project {
 
 const getProject = async () => {
   const res = await fetch(
-    "https://drab-teal-hippo-tam.cyclic.app/api/portfolio",
+    "https://myportfolioserver-production-a8fd.up.railway.app/api/portfolio",
     { cache: "no-cache" }
   );
 

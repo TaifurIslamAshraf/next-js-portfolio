@@ -26,13 +26,17 @@ export interface Project {
 }
 
 const getData = async () => {
-  const res = await fetch(
-    "https://drab-teal-hippo-tam.cyclic.app/api/portfolio",
-    {
-      cache: "no-store",
-    }
-  );
-  return res.json();
+  try {
+    const res = await fetch(
+      "https://myportfolioserver-production-a8fd.up.railway.app/api/portfolio",
+      {
+        cache: "no-store",
+      }
+    );
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const ProjectsPage = async () => {
@@ -50,7 +54,7 @@ const ProjectsPage = async () => {
           />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-y-7 md:space-y-0 place-items-center mt-10 sm:mb-0 mb-14">
-          {portfolio.allPortfolio?.map((item: Project) => {
+          {portfolio?.allPortfolio?.map((item: Project) => {
             return <ProjectCard key={item._id} data={item} />;
           })}
         </div>

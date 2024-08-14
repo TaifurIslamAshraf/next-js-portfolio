@@ -60,7 +60,7 @@ const Navbar = () => {
         <Link href={"/"}>Taifur Dev</Link>
       </div>
       <div className="space-x-10 font-semibold text-white-100 flex">
-        {navlink.map((value, index) => {
+        {navlink?.map((value, index) => {
           return (
             <div key={index}>
               <Link
