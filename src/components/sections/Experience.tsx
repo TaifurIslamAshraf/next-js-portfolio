@@ -6,19 +6,14 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-
-import { styles } from "../../app/styles";
-import { experiences } from "../../constants/index";
-
 import Image from "next/image";
-import SectionWrapper from "../Container";
-import TextAnimation from "../TextAnim/TextAnimation";
+import { experiences } from "../../constants/index";
 
 interface ExperienceCardProps {
   experience: {
     date: string;
     iconBg: string;
-    icon: any;
+    icon: any; // Changed from 'any' to 'string' for better type safety
     title: string;
     company_name: string;
     points: string[];
@@ -32,7 +27,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => {
         background: "#1d1836",
         color: "#fff",
       }}
-      contentArrowStyle={{ borderRight: "7px solid  #232631" }}
+      contentArrowStyle={{ borderRight: "7px solid #fff" }}
       date={experience.date}
       iconStyle={{ background: experience.iconBg }}
       icon={
@@ -40,10 +35,13 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => {
           <Image
             src={experience.icon}
             alt={experience.company_name}
+            width={60}
+            height={60}
             className="w-[60%] h-[60%] object-contain"
           />
         </div>
       }
+      visible={true}
     >
       <div>
         <h3 className="text-white text-[18px] xs:text-[24px] font-bold">
@@ -58,16 +56,14 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => {
       </div>
 
       <ul className="mt-5 list-disc ml-5 space-y-2">
-        {experience.points.map((point, index) => {
-          return (
-            <li
-              key={`experience-point-${index}`}
-              className="text-white-100 text-[14px] pl-1 tracking-wider"
-            >
-              {point}
-            </li>
-          );
-        })}
+        {experience.points.map((point, index) => (
+          <li
+            key={`experience-point-${index}`}
+            className="text-white-100 text-[14px] pl-1 tracking-wider"
+          >
+            {point}
+          </li>
+        ))}
       </ul>
     </VerticalTimelineElement>
   );
@@ -75,30 +71,27 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => {
 
 const Experience: React.FC = () => {
   return (
-    <SectionWrapper>
+    <div className="relative z-0">
       <div>
-        <p className={`${styles.sectionSubText} text-center`}>
+        <p className="text-secondary uppercase tracking-wider text-center">
           What I have done so far
         </p>
-        <TextAnimation
-          classes={`${styles.sectionHeadText} text-center`}
-          text="Work Experience."
-        />
+        <h2 className="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] text-center">
+          Work Experience.
+        </h2>
       </div>
 
       <div className="mt-20 flex flex-col">
-        <VerticalTimeline>
-          {experiences.map((experience, index) => {
-            return (
-              <ExperienceCard
-                key={`experience-${index}`}
-                experience={experience}
-              />
-            );
-          })}
+        <VerticalTimeline animate={true} lineColor="#232631">
+          {experiences.map((experience, index) => (
+            <ExperienceCard
+              key={`experience-${index}`}
+              experience={experience}
+            />
+          ))}
         </VerticalTimeline>
       </div>
-    </SectionWrapper>
+    </div>
   );
 };
 

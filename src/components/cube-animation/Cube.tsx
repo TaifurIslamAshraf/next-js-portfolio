@@ -1,6 +1,6 @@
 import Image from "next/image";
-import MongoDbSvg from "public/mongodb.svg";
-import NextjsSvg from "public/next.svg";
+import MongoDbSvg from "../../../public/mongodb.svg";
+import NextjsSvg from "../../../public/next.svg";
 import { FaGitAlt, FaJs, FaNode, FaReact } from "react-icons/fa";
 import "./cube.css";
 
