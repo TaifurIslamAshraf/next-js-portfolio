@@ -1,5 +1,7 @@
-import "animate.css";
+"use client";
 
+import "animate.css";
+import { useState } from "react";
 import { styles } from "@/app/styles";
 import SectionWrapper from "../Container";
 import Typeing from "../Typeing";
@@ -10,8 +12,11 @@ import Trem from "../terminal/Term";
 import Link from "next/link";
 import { BsGithub, BsLinkedin, BsTwitter } from "react-icons/bs";
 import { GrMail } from "react-icons/gr";
+import { GoTerminal } from "react-icons/go";
 
 const Hero = () => {
+  const [showTerm, setShowTerm] = useState(false);
+
   return (
     <div className={`sm:pt-28 text-white-100 z-1 relative ${styles.paddingY}`}>
       <div className="lg:block hidden">
@@ -20,7 +25,7 @@ const Hero = () => {
       <SectionWrapper>
         <div className="grid grid-cols-1 md:grid-cols-2 place-items-center">
           <div className="animate__animated animate__fadeInDown flex items-center md:order-1 order-2 xs:space-y-0 space-y-10">
-            <div className="space-x-7 xs:mr-14 mr-5">
+            <div className="xs:mr-14 mr-5 flex flex-col items-center justify-center gap-8">
               <Link
                 href={"https://twitter.com/md_taifur55"}
                 target="_blank"
@@ -48,6 +53,12 @@ const Hero = () => {
               >
                 <GrMail />
               </Link>
+              <button
+                onClick={() => setShowTerm((prev) => !prev)}
+                className="text-2xl rounded-full hover:translate-y-[-5px] transition-all duration-500"
+              >
+                <GoTerminal />
+              </button>
             </div>
             <div className="text">
               <h1
@@ -76,9 +87,15 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="h-[50vh] backdrop-blur-sm bg-white/10 overflow-auto scroll-smooth scrollbar-hide my-6 rounded-md shadow-lg border-secondary border-2 animate__animated animate__fadeIn">
-          <Trem />
-        </div>
+        {showTerm && (
+          <div
+            className={`h-[50vh] backdrop-blur-sm bg-white/10 overflow-auto scroll-smooth scrollbar-hide my-6 rounded-md shadow-lg border-secondary border-2 animate__animated ${
+              showTerm ? "animate__fadeIn" : "animate__fadeOut"
+            }`}
+          >
+            <Trem />
+          </div>
+        )}
       </SectionWrapper>
     </div>
   );
